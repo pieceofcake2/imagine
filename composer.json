@@ -1,22 +1,33 @@
 {
-	"name": "burzum/cakephp-imagine-plugin",
-	"type": "cakephp-plugin",
-	"description": "Imagine Plugin for CakePHP",
-	"keywords": ["cakephp","media","image","image-processing"],
-	"homepage": "https://github.com/burzum/cakephp-imagine-plugin",
-	"license": "MIT",
-	"authors": [
-		{
-			"name": "Florian Krämer",
-			"homepage": "http://florian-kraemer.net"
-		}
-	],
-	"require": {
-		"php": ">=5.3.2",
-		"imagine/imagine": "*",
-		"composer/installers": "*"
-	},
-	"extra": {
-		"installer-name" : "Imagine"
-	}
+    "name": "pieceofcake2/imagine",
+    "type": "cakephp-plugin",
+    "description": "Imagine Plugin for CakePHP",
+    "keywords": ["cakephp","media","image","image-processing"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.0",
+        "composer/installers": "*",
+        "imagine/imagine": "^1.5",
+        "pieceofcake2/cakephp": "^2.10"
+    },
+    "require-dev": {
+        "cakephp/cakephp-codesniffer": "^5.0",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^9.6",
+        "pieceofcake2/app": "^2.1",
+        "pieceofcake2/phpstan-cakephp2": "^0.2.1"
+    },
+    "replace": {
+        "burzum/cakephp-imagine-plugin": "^1.0"
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "composer/installers": true,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "installer-name": "Imagine"
+    }
 }
