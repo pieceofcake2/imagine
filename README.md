@@ -19,7 +19,7 @@ The **Imagine** plugin is a CakePHP wrapper around the [Imagine image manipulati
 
 ## Documentation
 
-For documentation, as well as tutorials, see the [Docs](docs/index.md) directory of this repository.
+For documentation, as well as tutorials, see the [Docs](docs/README.md) directory of this repository.
 
 ## Support
 
