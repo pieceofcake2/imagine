@@ -2,7 +2,7 @@
     "name": "pieceofcake2/imagine",
     "type": "cakephp-plugin",
     "description": "Imagine Plugin for CakePHP",
-    "keywords": ["cakephp","media","image","image-processing"],
+    "keywords": ["cakephp", "cakephp2", "media", "image", "image-processing"],
     "license": "MIT",
     "require": {
         "php": "^8.0",
@@ -16,6 +16,10 @@
         "phpunit/phpunit": "^9.6",
         "pieceofcake2/app": "^2.1",
         "pieceofcake2/phpstan-cakephp2": "^0.2.1"
+    },
+    "suggest": {
+        "ext-gd": "For GD-based image processing",
+        "ext-imagick": "For Imagick-based image processing"
     },
     "replace": {
         "burzum/cakephp-imagine-plugin": "^1.0"
