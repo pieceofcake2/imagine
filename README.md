@@ -13,7 +13,7 @@ The **Imagine** plugin is a CakePHP wrapper around the [Imagine image manipulati
 
 ## Requirements
 
- * CakePHP 2.10+
+ * CakePHP 2.12+
  * PHP 8.0+
  * GD (`ext-gd`) or Imagick (`ext-imagick`) PHP extension
 
