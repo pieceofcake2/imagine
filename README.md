@@ -15,7 +15,17 @@ The **Imagine** plugin is a CakePHP wrapper around the [Imagine image manipulati
 
  * CakePHP 2.10+
  * PHP 8.0+
- * Imagine Library (included as git submodule or composer dependency)
+ * GD (`ext-gd`) or Imagick (`ext-imagick`) PHP extension
+
+## Installation
+
+```bash
+composer require pieceofcake2/imagine
+```
+
+The [Imagine library](https://github.com/php-imagine/Imagine) is installed as a Composer dependency.
+
+See [Installation](docs/Documentation/Installation.md) for loading and configuring the plugin.
 
 ## Documentation
 
