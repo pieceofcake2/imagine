@@ -16,6 +16,7 @@ App::uses('Security', 'Utility');
  * CakePHP Imagine Plugin
  *
  * @package Imagine.View.Helper
+ * @property HtmlHelper $Html
  */
 class ImagineHelper extends AppHelper
 {
@@ -38,8 +39,9 @@ class ImagineHelper extends AppHelper
      *                        or an array specifying any of the following: 'controller', 'action',
      *                        and/or 'plugin', in addition to named arguments (keyed array elements),
      *                        and standard URL arguments (indexed array elements)
-     * @param bool $full If true, the full base URL will be prepended to the result
-     * @param array $options List of named arguments that need to sign
+     * @param array|bool $full If true, the full base URL will be prepended to the result.
+     *   For backward compatibility, the options can be passed here and $full as the third argument.
+     * @param array|bool $options List of named arguments that need to sign
      * @return string Full translated signed URL with base path and with
      * @access public
      */
