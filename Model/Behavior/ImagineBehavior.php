@@ -355,6 +355,11 @@ class ImagineBehavior extends ModelBehavior
     /**
      * Wrapper for Imagine flipHorizontally and flipVertically
      *
+     * Options:
+     *
+     * - `direction`: `'vertically'` (default) or `'horizontally'`.
+     *   `'vertical'` and `'horizontal'` are accepted as well.
+     *
      * @param Model $model
      * @param ImageInterface $image
      * @param array $options Array of options for processing the image
@@ -365,14 +370,19 @@ class ImagineBehavior extends ModelBehavior
      */
     public function flip(Model $model, ImageInterface $image, $options = [])
     {
-        if (!isset($options['direction'])) {
-            $options['direction'] = 'vertically';
+        $methods = [
+            'vertically' => 'flipVertically',
+            'vertical' => 'flipVertically',
+            'horizontally' => 'flipHorizontally',
+            'horizontal' => 'flipHorizontally',
+        ];
+
+        $direction = $options['direction'] ?? 'vertically';
+        if (!is_string($direction) || !isset($methods[$direction])) {
+            throw new InvalidArgumentException(__d('Imagine', 'Invalid direction, use vertically or horizontally'));
         }
-        if (!in_array($options['direction'], ['vertically', 'horizontall'])) {
-            throw new InvalidArgumentException(__d('Imagine', 'Invalid direction, use verticall or horizontall'));
-        }
-        $method = 'flip' . $options['direction'];
-        $image->{$method}();
+
+        $image->{$methods[$direction]}();
     }
 
     /**

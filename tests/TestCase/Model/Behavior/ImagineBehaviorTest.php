@@ -10,6 +10,12 @@
  * @license MIT License (http://www.opensource.org/licenses/mit-license.php)
  */
 
+use Imagine\Gd\Imagine;
+use Imagine\Image\Box;
+use Imagine\Image\ImageInterface;
+use Imagine\Image\Palette\RGB;
+use Imagine\Image\Point;
+
 App::uses('Model', 'Model');
 App::uses('Security', 'Utility');
 
@@ -314,5 +320,91 @@ class ImagineBehaviorTest extends CakeTestCase
 
         $result = $this->Model->getImageSize(TMP . 'thumbnail-upscale-width.jpg');
         $this->assertEquals($result, [500, 664, 'x' => 500, 'y' => 664]);
+    }
+
+    /**
+     * Data provider for testFlipDirection
+     *
+     * @return array
+     */
+    public static function flipDirectionProvider(): array
+    {
+        return [
+            'default' => [[], 'flipVertically'],
+            'vertically' => [['direction' => 'vertically'], 'flipVertically'],
+            'vertical' => [['direction' => 'vertical'], 'flipVertically'],
+            'horizontally' => [['direction' => 'horizontally'], 'flipHorizontally'],
+            'horizontal' => [['direction' => 'horizontal'], 'flipHorizontally'],
+        ];
+    }
+
+    /**
+     * testFlipDirection
+     *
+     * @param array $options Flip options
+     * @param string $method Expected Imagine method
+     * @return void
+     * @dataProvider flipDirectionProvider
+     */
+    public function testFlipDirection(array $options, string $method): void
+    {
+        $other = $method === 'flipVertically' ? 'flipHorizontally' : 'flipVertically';
+
+        $image = $this->createMock(ImageInterface::class);
+        $image->expects($this->once())->method($method);
+        $image->expects($this->never())->method($other);
+
+        $this->Model->processImage($image, null, [], ['flip' => $options]);
+    }
+
+    /**
+     * Data provider for testFlipInvalidDirection
+     *
+     * @return array
+     */
+    public static function flipInvalidDirectionProvider(): array
+    {
+        return [
+            'misspelled' => ['horizontall'],
+            'unknown' => ['diagonal'],
+            'not a string' => [1],
+        ];
+    }
+
+    /**
+     * testFlipInvalidDirection
+     *
+     * @param mixed $direction Flip direction
+     * @return void
+     * @dataProvider flipInvalidDirectionProvider
+     */
+    public function testFlipInvalidDirection($direction): void
+    {
+        $image = $this->createMock(ImageInterface::class);
+        $image->expects($this->never())->method('flipVertically');
+        $image->expects($this->never())->method('flipHorizontally');
+
+        $this->expectException(InvalidArgumentException::class);
+        $this->Model->processImage($image, null, [], ['flip' => ['direction' => $direction]]);
+    }
+
+    /**
+     * testFlipHorizontally flips the pixels of a real image
+     *
+     * @return void
+     */
+    public function testFlipHorizontally(): void
+    {
+        $palette = new RGB();
+        $red = $palette->color('#ff0000');
+        $blue = $palette->color('#0000ff');
+
+        $image = (new Imagine())->create(new Box(2, 1), $red);
+        $image->draw()->dot(new Point(1, 0), $blue);
+
+        $this->Model->processImage($image, null, [], ['flip' => ['direction' => 'horizontal']]);
+
+        $this->assertSame('#0000ff', (string)$image->getColorAt(new Point(0, 0)));
+        $this->assertSame('#ff0000', (string)$image->getColorAt(new Point(1, 0)));
     }
 }
