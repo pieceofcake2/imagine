@@ -1,7 +1,7 @@
 {
     "name": "pieceofcake2/imagine",
     "type": "cakephp-plugin",
-    "description": "Imagine Plugin for CakePHP",
+    "description": "CakePHP 2 plugin for resizing, cropping and creating thumbnails of images with the Imagine library",
     "keywords": ["cakephp", "cakephp2", "media", "image", "image-processing"],
     "license": "MIT",
     "require": {
