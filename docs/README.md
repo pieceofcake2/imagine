@@ -101,7 +101,7 @@ options), so you can add your own operations.
 | `heighten` | `size` (required): resizes to the height, keeping the aspect ratio; `preventUpscale` |
 | `widenAndHeighten` | one of `width`, `height` or `size`; `noUpScale`, `noDownScale` |
 | `scale` | `factor` (required): scales by the factor; `preventUpscale` |
-| `flip` | `direction`: `vertically` (default) |
+| `flip` | `direction`: `vertically` (default) or `horizontally` (`vertical` and `horizontal` also work) |
 | `rotate` | `degree` |
 | `thumbnail` | `width`, `height` (required), `mode`: `inset` (default) or `outbound`; `preventUpscale` |
 | `resize` | `width`, `height` (required) |
