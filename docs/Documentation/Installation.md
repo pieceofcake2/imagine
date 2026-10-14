@@ -1,57 +1,43 @@
 Installation
 ============
 
-Using Git
----------
-
-You need to init the git submodule of imagine
-
-```
-git submodule update --init
-```
-
-If you're **not** using the submodule get it from https://github.com/avalanche123/Imagine
-
-Copy Imagine into the plugins vendor folder Vendor/Imagine, the root of the Imagine package should be inside this folder. Vendor/Imagine/README.md should be present if you placed the code correctly.
-
-Load the imagine plugin in your apps ```app/Config/bootstrap.php``` file including it's bootstrap.
-
-    CakePlugin::load('Imagine' => array('bootstrap' => true));
-
-The bootstrap.php of the plugin will just register a SPL autoloader for the Imagine namespace. If you didn't put Imagine in the plugins vendor folder you'll have set your own autoloader up to load it.
-
 Using Composer
 --------------
 
-Assuming you're mostly familiar with the basics of composer just take a look at the ```extra```section. You'll have to define the installer path for the imagine plugin so that composer can put it in the right place with the right name.
+Install the plugin with [Composer](https://getcomposer.org/) from the directory where your project's `composer.json` is located:
 
-```js
-{
-    "config": {
-        "vendor-dir": "app/Vendor/",
-        "preferred-install": "source"
-    },
-    "require": {
-        "burzum/cakephp-imagine-plugin": "dev-master",
-        "imagine/imagine": "dev-master"
-    },
-    "extra": {
-        "installer-paths": {
-            "app/Plugin/Imagine": ["burzum/cakephp-imagine-plugin"]
-        }
+```
+composer require pieceofcake2/imagine
+```
+
+This also installs the [Imagine library](https://github.com/php-imagine/Imagine) (`imagine/imagine`) as a dependency. Because the plugin has the type `cakephp-plugin`, it is installed by [composer/installers](https://github.com/composer/installers). Your application's `composer.json` needs the `installer-paths` setting so that the plugin is installed where CakePHP looks for plugins:
+
+```json
+"config": {
+    "allow-plugins": {
+        "composer/installers": true
+    }
+},
+"extra": {
+    "installer-paths": {
+        "plugins/{$name}/": ["type:cakephp-plugin"]
     }
 }
 ```
 
-Bootstrap
----------
+With this setting the plugin is installed into `plugins/Imagine`. In an application that uses the legacy `app/` layout, use `"app/Plugin/{$name}/"` instead. The [pieceofcake2/app](https://github.com/pieceofcake2/app) skeleton already contains this setting.
 
-If you're not using composer make sure you load the plugin with bootstrap enabled in your apps `bootstrap.php`. Or copy the content from it to your apps bootstrap.php. If you don't do that the vendor libs won't be loaded.
+The Imagine library is loaded by Composer's autoloader, so make sure your application includes `vendor/autoload.php`.
+
+You also need the GD (`ext-gd`) or Imagick (`ext-imagick`) PHP extension, depending on the Imagine engine you want to use.
+
+Loading the plugin
+------------------
+
+Load the plugin in your app's `config/bootstrap.php` (`app/Config/bootstrap.php` in the legacy layout):
 
 ```php
-CakePlugin::load('Imagine', array(
-	'bootstrap' => true
-));
+CakePlugin::load('Imagine');
 ```
 
 Configure Salt for Imagine
