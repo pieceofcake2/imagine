@@ -22,7 +22,7 @@ Image manipulation methods:
 * **heighten**:
 * **widenAndHeighten**:
 * **scale**:
-* **flip**:
+* **flip**: `direction` is `vertically` (default) or `horizontally` (`vertical` and `horizontal` also work).
 * **rotate**:
 * **thumbnail**:
 * **resize**:
