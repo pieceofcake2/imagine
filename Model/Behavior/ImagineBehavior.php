@@ -145,7 +145,7 @@ class ImagineBehavior extends ModelBehavior
      */
     public function hashImageOperations(array $imageSizes, int $hashLenght = 8): array
     {
-        return ImagineUtility::hashImageOperations($imageSizes, $hashLenght = 8);
+        return ImagineUtility::hashImageOperations($imageSizes, $hashLenght);
     }
 
     /**

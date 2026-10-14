@@ -90,6 +90,31 @@ class ImagineBehaviorTest extends CakeTestCase
     }
 
     /**
+     * The behavior passes the hash length to ImagineUtility
+     *
+     * @return void
+     */
+    public function testHashImageOperationsLength(): void
+    {
+        $operations = [
+            'SomeModel' => [
+                't200x150' => [
+                    'thumbnail' => [
+                        'width' => 200,
+                        'height' => 150,
+                    ],
+                ],
+            ],
+        ];
+
+        $result = $this->Model->Behaviors->Imagine->hashImageOperations($operations, 12);
+        $this->assertSame(12, strlen($result['SomeModel']['t200x150']));
+
+        $result = $this->Model->Behaviors->Imagine->hashImageOperations($operations);
+        $this->assertSame('38b1868f', $result['SomeModel']['t200x150']);
+    }
+
+    /**
      * getImageSize
      *
      * @return void
