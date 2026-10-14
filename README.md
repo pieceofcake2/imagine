@@ -8,37 +8,39 @@
 [![CI](https://img.shields.io/github/actions/workflow/status/pieceofcake2/imagine/CI.yml?label=CI)](https://github.com/pieceofcake2/imagine/actions/workflows/CI.yml)
 [![Codecov](https://img.shields.io/codecov/c/gh/pieceofcake2/imagine?label=Coverage)](https://codecov.io/gh/pieceofcake2/imagine)
 
-__This is forked for CakePHP2.__
-
-The **Imagine** plugin is a CakePHP wrapper around the [Imagine image manipulation library](https://github.com/php-imagine/Imagine). It makes it very easy to manipulate image data like resize, thumbnail, crop or even to do more complex tasks like creating a photo collage. Also it abstracts the different ways, GD, Imagick, Imagick Shell to work with image data in php.
+The Imagine plugin is a CakePHP wrapper around the
+[Imagine image manipulation library](https://github.com/php-imagine/Imagine). It makes it easy
+to resize, crop and create thumbnails of images with a model behavior, and to serve signed image
+URLs with a helper and a component. This is a fork of
+[burzum/cakephp-imagine-plugin](https://github.com/burzum/cakephp-imagine-plugin) for
+[pieceofcake2/cakephp](https://github.com/pieceofcake2/cakephp).
 
 ## Requirements
 
- * CakePHP 2.12+
- * PHP 8.0+
- * GD (`ext-gd`) or Imagick (`ext-imagick`) PHP extension
+* PHP 8.0+
+* pieceofcake2/cakephp 2.12+
+* GD (`ext-gd`) or Imagick (`ext-imagick`) PHP extension
 
 ## Installation
 
-```bash
+```
 composer require pieceofcake2/imagine
 ```
 
-The [Imagine library](https://github.com/php-imagine/Imagine) is installed as a Composer dependency.
-
-See [Installation](docs/Documentation/Installation.md) for loading and configuring the plugin.
-
 ## Documentation
 
-For documentation, as well as tutorials, see the [Docs](docs/README.md) directory of this repository.
+See the [documentation](https://pieceofcake2.github.io/imagine/).
 
-## Support
+## Reporting Issues
 
-For bugs and feature requests, please use the [issues](https://github.com/pieceofcake2/imagine/issues) section of this repository.
+Please open an issue on [GitHub](https://github.com/pieceofcake2/imagine/issues).
+
+## Contributing
+
+See the [contribution guidelines](https://github.com/pieceofcake2/.github/blob/master/CONTRIBUTING.md).
 
 ## License
 
 Copyright 2012 - 2014, Florian Krämer
 
-Licensed under The MIT License
-Redistributions of files must retain the above copyright notice.
+The MIT License. See [LICENSE](LICENSE).
