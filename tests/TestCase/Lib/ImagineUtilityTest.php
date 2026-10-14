@@ -38,6 +38,33 @@ class ImagineUtilityTest extends CakeTestCase
     }
 
     /**
+     * All operations are included, sorted by name
+     *
+     * @return void
+     */
+    public function testOperationsToStringMultipleOperations(): void
+    {
+        $operations = [
+            'thumbnail' => [
+                'width' => 200,
+                'height' => 150,
+            ],
+            'crop' => [
+                'width' => 100,
+                'height' => 100,
+            ],
+        ];
+        $result = ImagineUtility::operationsToString($operations);
+        $this->assertSame('.crop+width-100+height-100.thumbnail+width-200+height-150', $result);
+
+        $result = ImagineUtility::operationsToString($operations, ['operations' => '_', 'params' => '~', 'value' => '=']);
+        $this->assertSame('_crop~width=100~height=100_thumbnail~width=200~height=150', $result);
+
+        $result = ImagineUtility::operationsToString($operations, [], 'md5');
+        $this->assertSame(md5('.crop+width-100+height-100.thumbnail+width-200+height-150'), $result);
+    }
+
+    /**
      * testHashImageOperations
      *
      * @return void
@@ -61,5 +88,31 @@ class ImagineUtilityTest extends CakeTestCase
                 't200x150' => '38b1868f',
             ],
         ]);
+    }
+
+    /**
+     * The hash length argument is used
+     *
+     * @return void
+     */
+    public function testHashImageOperationsLength(): void
+    {
+        $operations = [
+            'SomeModel' => [
+                't200x150' => [
+                    'thumbnail' => [
+                        'width' => 200,
+                        'height' => 150,
+                    ],
+                ],
+            ],
+        ];
+
+        $result = ImagineUtility::hashImageOperations($operations, 12);
+        $this->assertSame(12, strlen($result['SomeModel']['t200x150']));
+        $this->assertStringStartsWith('38b1868f', $result['SomeModel']['t200x150']);
+
+        $result = ImagineUtility::hashImageOperations($operations, 4);
+        $this->assertSame('38b1', $result['SomeModel']['t200x150']);
     }
 }

@@ -48,7 +48,7 @@ class ImagineUtility
                     $tmp[] = $key . $separators['value'] . $value;
                 }
             }
-            $result = $separators['operations'] . $operation . $separators['params'] . join($separators['params'], $tmp);
+            $result .= $separators['operations'] . $operation . $separators['params'] . join($separators['params'], $tmp);
         }
 
         if ($hash && $result !== '') {
