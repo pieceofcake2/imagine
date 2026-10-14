@@ -153,7 +153,7 @@ class ImagineBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param ImageInterface $image
-     * @param array Array of options for processing the image
+     * @param array $options Array of options for processing the image
      * @return void
      * @throws InvalidArgumentException
      */
@@ -357,7 +357,7 @@ class ImagineBehavior extends ModelBehavior
      *
      * @param Model $model
      * @param ImageInterface $image
-     * @param array Array of options for processing the image
+     * @param array $options Array of options for processing the image
      * @return void
      * @throws InvalidArgumentException
      * @internal param \Model $object
@@ -404,10 +404,10 @@ class ImagineBehavior extends ModelBehavior
 
         $imageSize = $this->getImageSize($model, $image);
         if (isset($options['preventUpscale']) && $options['preventUpscale'] === true) {
-            if (isset($options['height']) && $options['height'] > $imageSize['y']) {
+            if ($options['height'] > $imageSize['y']) {
                 return;
             }
-            if (isset($options['width']) && $options['width'] > $imageSize['x']) {
+            if ($options['width'] > $imageSize['x']) {
                 return;
             }
         }
@@ -441,7 +441,7 @@ class ImagineBehavior extends ModelBehavior
      * Gets the size of an image
      *
      * @param Model $Model
-     * @param ImageInterface|string Imagine Image object or string of a file name
+     * @param ImageInterface|string $image Imagine Image object or string of a file name
      * @return array first value is width, second height
      * @see Imagine\Image\ImageInterface::getSize()
      */

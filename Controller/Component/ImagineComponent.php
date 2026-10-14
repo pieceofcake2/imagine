@@ -153,7 +153,6 @@ class ImagineComponent extends Component
                 [$key, $value] = explode('|', $param);
                 $resultParams[$key] = $value;
             }
-            $resultParams;
             $namedParams[$name] = $resultParams;
         }
 

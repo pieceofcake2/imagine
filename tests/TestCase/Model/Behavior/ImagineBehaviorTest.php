@@ -302,5 +302,17 @@ class ImagineBehaviorTest extends CakeTestCase
 
         $result = $this->Model->getImageSize(TMP . 'thumbnail-upscale.jpg');
         $this->assertEquals($result, [500, 664, 'x' => 500, 'y' => 664]);
+
+        // Thumbnail, only the width would upscale
+        $this->Model->processImage($image, TMP . 'thumbnail-upscale-width.jpg', [], [
+            'thumbnail' => [
+                'height' => 100,
+                'width' => 2000,
+                'preventUpscale' => true,
+            ],
+        ]);
+
+        $result = $this->Model->getImageSize(TMP . 'thumbnail-upscale-width.jpg');
+        $this->assertEquals($result, [500, 664, 'x' => 500, 'y' => 664]);
     }
 }
