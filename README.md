@@ -23,7 +23,7 @@ URLs with a helper and a component. This is a fork of
 
 ## Installation
 
-```
+```bash
 composer require pieceofcake2/imagine
 ```
 

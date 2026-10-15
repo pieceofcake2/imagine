@@ -19,7 +19,7 @@ PHP: GD, Imagick and Gmagick.
 Install the plugin with [Composer](https://getcomposer.org/) from the directory where your
 project's `composer.json` is located:
 
-```
+```bash
 composer require pieceofcake2/imagine
 ```
 
