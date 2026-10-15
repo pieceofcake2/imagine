@@ -18,7 +18,7 @@ Imagine プラグインは、[Imagine 画像処理ライブラリ](https://githu
 ## インストール
 
 プロジェクトの `composer.json` があるディレクトリで、[Composer](https://getcomposer.org/) を使って
-プラグインをインストールします:
+プラグインをインストールします。
 
 ```bash
 composer require pieceofcake2/imagine
@@ -30,7 +30,7 @@ composer require pieceofcake2/imagine
 
 このプラグインは `cakephp-plugin` タイプなので、`composer/installers` によってプラグインディレクトリに
 インストールされます。正しい場所にインストールされるように、アプリケーションの `composer.json` で
-`installer-paths` を設定してください:
+`installer-paths` を設定してください。
 
 | レイアウト | `installer-paths` |
 | --- | --- |
@@ -44,9 +44,9 @@ composer require pieceofcake2/imagine
 
 <a id="loading-the-plugin"></a>
 
-### プラグインのロード
+### プラグインの読み込み
 
-`config/bootstrap.php` (レガシーレイアウトでは `app/Config/bootstrap.php`) でプラグインをロードします:
+`config/bootstrap.php` (レガシーレイアウトでは `app/Config/bootstrap.php`) でプラグインを読み込みます。
 
 ```php
 CakePlugin::load('Imagine');
@@ -57,7 +57,7 @@ CakePlugin::load('Imagine');
 ### ソルトの設定
 
 画像の URL のハッシュに使うソルトを設定する必要があります ([Imagine ヘルパー](#imagine-helper) を
-参照してください):
+ご覧ください)。
 
 ```php
 Configure::write('Imagine.salt', 'your-salt-string-here');
@@ -70,7 +70,7 @@ Configure::write('Imagine.salt', 'your-salt-string-here');
 ## Imagine ビヘイビア
 
 このビヘイビアは、一連の操作で画像ファイルを処理します。`ImagineBehavior::processImage()` を
-参照してください。
+ご覧ください。
 
 ```php
 class Image extends AppModel
@@ -79,7 +79,7 @@ class Image extends AppModel
 }
 ```
 
-`engine` 設定で Imagine のエンジンを選択します: `Gd` (デフォルト)、`Imagick`、`Gmagick` のいずれかです。
+`engine` 設定で Imagine のエンジンを選択します。`Gd` (デフォルト)、`Imagick`、`Gmagick` のいずれかです。
 
 ```php
 public $actsAs = ['Imagine.Imagine' => ['engine' => 'Imagick']];
@@ -128,13 +128,13 @@ public $actsAs = ['Imagine.Imagine' => ['engine' => 'Imagick']];
   ハッシュ
 * `imagineObject()`: Imagine のインスタンス
 
-素の Imagine のインスタンスは、モデルから取得できます:
+素の Imagine のインスタンスは、モデルから取得できます。
 
 ```php
 $this->Image->imagineObject();
 ```
 
-または、ビヘイビアから直接取得できます:
+または、ビヘイビアから直接取得できます。
 
 ```php
 $this->Image->Behaviors->Imagine->Imagine;
@@ -144,7 +144,7 @@ $this->Image->Behaviors->Imagine->Imagine;
 
 ## Imagine コンポーネント
 
-Imagine コンポーネントは次の処理を行います:
+Imagine コンポーネントは次の処理を行います。
 
 * `actions` 設定に指定したアクションで、[Imagine ヘルパー](#imagine-helper) が生成した正しいハッシュが
   URL の名前付きパラメータとして渡されたことを検証し、操作を `$this->Imagine->operations` に展開します
@@ -214,7 +214,7 @@ echo $this->Html->image($url);
 ### FileStorage による画像の保存
 
 アプリケーションで画像やファイルを保存するには、[FileStorage](https://github.com/burzum/cakephp-file-storage)
-プラグインを参照してください。FileStorage にはアップロード後に画像を自動で処理する機能があり、
+プラグインをご覧ください。FileStorage にはアップロード後に画像を自動で処理する機能があり、
 その処理に Imagine を使っています。
 
 <a id="performance-notes"></a>
@@ -232,14 +232,14 @@ echo $this->Html->image($url);
 文字列に変換します。
 
 キャッシュされたバージョンを持つファイルをまとめて削除できるように、このメソッドで生成した文字列を
-画像のファイル名の末尾に付けてください。想定している使い方は、次のようにファイルを保存することです
+画像のファイル名の末尾に付けてください。想定している使い方は、次のようにファイルを保存することです。
 
 ```
 my_horse.thumbnail+width-100+height-100.jpg
 ```
 
-ファイル名に画像の操作をすべて含めるとかなり長くなることがあるので、文字列をハッシュ化して (例えば
-`$hash` に `'md5'` を渡して) 次のようなファイル名を生成するほうがよいでしょう:
+ファイル名に画像の操作をすべて含めるとかなり長くなることがあるので、文字列をハッシュ化して (たとえば
+`$hash` に `'md5'` を渡して) 次のようなファイル名を生成するほうがよいでしょう。
 
 ```
 my_horse.e18c820f1c3da390e3d01b4fb91b0f68.jpg
@@ -247,7 +247,7 @@ my_horse.e18c820f1c3da390e3d01b4fb91b0f68.jpg
 
 つまり、アップロード後に画像のメタデータをデータベースに保存し、ファイル名にはそのレコードの id を付け、
 その末尾にこの文字列を付けて、その文字列もデータベースに保存します。ビューでは、画像へのアクセスを
-それ以上制御する必要がなければ、画像に直接リンクするだけで済みます:
+それ以上制御する必要がなければ、画像に直接リンクするだけで済みます。
 
 ```php
 echo $this->Html->image('/images/05/04/61/my_horse.thumbnail+width-100+height-100.jpg');
@@ -257,7 +257,7 @@ echo $this->Html->image('/images/05/04/61/my_horse.thumbnail+width-100+height-10
 
 ## 基本的な例
 
-モデルにビヘイビアを追加します:
+モデルにビヘイビアを追加します。
 
 ```php
 class Image extends AppModel
@@ -266,7 +266,7 @@ class Image extends AppModel
 }
 ```
 
-これで画像を加工できるようになります:
+これで画像を加工できるようになります。
 
 ```php
 $imageOperations = [
@@ -291,10 +291,11 @@ $this->Image->processImage(
 
 ## 由来
 
-このパッケージは、Florian Krämer 氏が作成した
+このパッケージは
 [burzum/cakephp-imagine-plugin](https://github.com/burzum/cakephp-imagine-plugin)
-(Packagist では `burzum/cakephp-imagine-plugin`、アップストリームの最終バージョンは 1.0.6) をフォークして
-メンテナンスしているものです。[pieceofcake2](https://github.com/pieceofcake2) が、モダンな PHP で動く
-CakePHP 2 向けにメンテナンスしています。オリジナルからの変更点は
+(Packagist では `burzum/cakephp-imagine-plugin`、アップストリームの最終バージョンは 1.0.6)
+のメンテナンスされたフォークで、元は Florian Krämer によって作られました。
+[pieceofcake2](https://github.com/pieceofcake2) が、モダンな PHP 上の CakePHP 2 向けにメンテナンスしています。
+オリジナルからの変更点は
 [フォーク以降のコミット履歴](https://github.com/pieceofcake2/imagine/compare/a15b2f9...1.x)
-を参照してください。
+にあります。
