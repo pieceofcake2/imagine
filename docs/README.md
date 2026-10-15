@@ -19,7 +19,7 @@ PHP: GD, Imagick and Gmagick.
 Install the plugin with [Composer](https://getcomposer.org/) from the directory where your
 project's `composer.json` is located:
 
-```
+```bash
 composer require pieceofcake2/imagine
 ```
 
@@ -266,3 +266,12 @@ $this->Image->processImage(
     $imageOperations,
 );
 ```
+
+## Origin
+
+This package is a maintained fork of
+[burzum/cakephp-imagine-plugin](https://github.com/burzum/cakephp-imagine-plugin)
+(`burzum/cakephp-imagine-plugin` on Packagist, last upstream version 1.0.6), originally by Florian
+Krämer. It is maintained for CakePHP 2 on modern PHP by
+[pieceofcake2](https://github.com/pieceofcake2). Changes from the original are listed in the
+[commit history since the fork](https://github.com/pieceofcake2/imagine/compare/a15b2f9...1.x).

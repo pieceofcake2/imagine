@@ -15,6 +15,13 @@ URLs with a helper and a component. This is a fork of
 [burzum/cakephp-imagine-plugin](https://github.com/burzum/cakephp-imagine-plugin) for
 [pieceofcake2/cakephp](https://github.com/pieceofcake2/cakephp).
 
+## Documentation
+
+- Website: https://pieceofcake2.github.io/imagine/
+- Markdown: [docs/README.md](docs/README.md) (for AI tools and offline reading)
+
+The Markdown documentation is also included in the Composer package, in the plugin's directory: `plugins/Imagine/docs/README.md` (the location depends on your `installer-paths`). Install the package with `--dev` if you only need it for development.
+
 ## Requirements
 
 * PHP 8.0+
@@ -23,13 +30,9 @@ URLs with a helper and a component. This is a fork of
 
 ## Installation
 
-```
+```bash
 composer require pieceofcake2/imagine
 ```
-
-## Documentation
-
-See the [documentation](https://pieceofcake2.github.io/imagine/).
 
 ## Reporting Issues
 
@@ -38,6 +41,15 @@ Please open an issue on [GitHub](https://github.com/pieceofcake2/imagine/issues)
 ## Contributing
 
 See the [contribution guidelines](https://github.com/pieceofcake2/.github/blob/master/CONTRIBUTING.md).
+
+## Origin
+
+This package is a maintained fork of
+[burzum/cakephp-imagine-plugin](https://github.com/burzum/cakephp-imagine-plugin)
+(`burzum/cakephp-imagine-plugin` on Packagist, last upstream version 1.0.6), originally by Florian
+Krämer. It is maintained for CakePHP 2 on modern PHP by
+[pieceofcake2](https://github.com/pieceofcake2). Changes from the original are listed in the
+[commit history since the fork](https://github.com/pieceofcake2/imagine/compare/a15b2f9...1.x).
 
 ## License
 
