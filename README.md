@@ -17,8 +17,8 @@ URLs with a helper and a component. This is a fork of
 
 ## Documentation
 
-- Website: https://pieceofcake2.github.io/imagine/
-- Markdown: [docs/README.md](docs/README.md) (for AI tools and offline reading)
+- Website: https://pieceofcake2.github.io/imagine/ (日本語: https://pieceofcake2.github.io/imagine/ja/)
+- Markdown: [docs/README.md](docs/README.md) (日本語: [docs/ja/README.md](docs/ja/README.md)) (for AI tools and offline reading)
 
 The Markdown documentation is also included in the Composer package, in the plugin's directory: `plugins/Imagine/docs/README.md` (the location depends on your `installer-paths`). Install the package with `--dev` if you only need it for development.
 
